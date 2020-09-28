@@ -2,6 +2,8 @@ const langageService = require('../Services/langue.service');
 
 
 module.exports = {
+
+
     async getAllLangages(req,res){
 
         return langageService.getAllLangages(req,res)

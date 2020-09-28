@@ -11,7 +11,7 @@ module.exports = {
     async getAllLangages(req,res){
 
         try {
-            const langueCollection = await Langue.findAll({});
+            const langueCollection = await Langue.findAndCountAll({});
             res.status(201).send(langueCollection);
         }catch (e) {
             console.log(e);
@@ -27,7 +27,6 @@ module.exports = {
      */
     async createLangage(req,res){
 
-        console.log(req.body)
         try {
             const langue = await Langue.create(
                 {
@@ -109,6 +108,15 @@ module.exports = {
 
         }catch (e) {
 
+            console.log(e.message);
+        }
+    },
+
+    async countAllLangage(req,res){
+        try {
+            const result = await Langue.findAndCountAll({});
+            res.status(200).send(result);
+        }catch (e) {
             console.log(e.message);
         }
     }
